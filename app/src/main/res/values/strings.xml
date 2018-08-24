@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DataNose Scanner</string>
+    <string name="title_home">Home</string>
+    <string name="title_scan">Scannen</string>
+    <string name="title_result">Resultaat</string>
+
+</resources>
