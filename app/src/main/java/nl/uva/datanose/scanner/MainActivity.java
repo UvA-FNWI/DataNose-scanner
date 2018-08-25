@@ -151,7 +151,11 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 100);
+        }
 
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET}, 100);
         }
 
         connector = new DataNoseConnector(sharedPreferences.getString( "key",""));

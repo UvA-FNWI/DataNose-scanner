@@ -49,7 +49,7 @@ class DataNoseCodeResponse {
 
 public class DataNoseConnector {
 
-    public static final String API_URL = "https://api-acc.datanose.nl/ScannerApp?key=";
+    public static final String API_URL = "https://api.datanose.nl/ScannerApp?key=";
     private OkHttpClient client;
     public String key;
 
