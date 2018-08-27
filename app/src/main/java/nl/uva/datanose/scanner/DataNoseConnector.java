@@ -1,8 +1,6 @@
 package nl.uva.datanose.scanner;
 
 
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,8 +33,6 @@ class DataNoseCodeResponse {
     public DataNoseCodeResponse(Response response) throws IOException, JSONException {
 
         String body = response.body().string();
-        Log.e("Got:", body);
-
         JSONObject json = new JSONObject(body);
 
         status = json.getString("status");
