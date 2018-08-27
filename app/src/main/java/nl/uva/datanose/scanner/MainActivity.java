@@ -108,8 +108,11 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
                 remarks.setVisibility(View.GONE);
 
             builder.setPositiveButton("Volgende", MainActivity.this);
-            builder.setOnDismissListener(MainActivity.this);
-            builder.show();
+
+            AlertDialog alert = builder.create();
+
+            alert.setOnDismissListener(MainActivity.this);
+            alert.show();
         }
     }
 
