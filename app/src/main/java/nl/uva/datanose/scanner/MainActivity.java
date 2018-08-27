@@ -44,6 +44,12 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
 
         protected void onPostExecute(DataNoseKeyResponse response) {
 
+            if(response == null)
+            {
+                mTextMessage.setText("Je hebt momenteel geen internet verbinding. Maak eerst verbinding en herstart deze app.");
+                return;
+            }
+
             if(!response.status.equals("valid-key"))
             {
                 mTextMessage.setText("Voer eerst een geldige sleutel in.");
