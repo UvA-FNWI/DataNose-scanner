@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace DataNose_scanner
+namespace DataNoseScanner
 {
     public partial class MainPage : ContentPage
     {

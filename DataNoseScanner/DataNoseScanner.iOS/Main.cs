@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace DataNose_scanner.iOS
+namespace DataNoseScanner.iOS
 {
     public class Application
     {

@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DF16044B-4DEE-472D-B239-13014B15ABB9}</ProjectGuid>
+    <ProjectGuid>{D7B83150-634A-4365-A2C4-0C7BAE44F858}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DataNose_scanner.iOS</RootNamespace>
+    <RootNamespace>DataNoseScanner.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>DataNose-scanner.iOS</AssemblyName>
+    <AssemblyName>DataNoseScanner.iOS</AssemblyName>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -152,9 +152,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\DataNose-scanner\DataNose-scanner.csproj">
-      <Project>{94e1cade-d104-4a66-8344-2803f8c2a960}</Project>
-      <Name>DataNose-scanner</Name>
+    <ProjectReference Include="..\DataNoseScanner\DataNoseScanner.csproj">
+      <Project>{8A356800-EAFD-42C9-A9FA-C3703BA21900}</Project>
+      <Name>DataNoseScanner</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
