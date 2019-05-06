@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\IToastMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseCodeResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseConnector.cs" />

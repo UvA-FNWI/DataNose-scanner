@@ -47,6 +47,7 @@ namespace DataNoseScanner
 
         private async Task LoginSuccessfull(string sMessage)
         {
+            DependencyService.Get<IToastMessage>().LongAlert(sMessage);
             await LoginSuccessfull();
         }
 
@@ -57,7 +58,7 @@ namespace DataNoseScanner
 
         private void LoginFailed()
         {
-            
+            DependencyService.Get<IToastMessage>().LongAlert("Incorrect username or password");
         }
 
     }
