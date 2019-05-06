@@ -17,9 +17,8 @@ namespace DataNoseScanner
             InitializeComponent();
         }
 
-        private void btnLogin_Clicked(object sender, EventArgs e)
+        private async void btnLogin_Clicked(object sender, EventArgs e)
         {
         }
-
     }
 }

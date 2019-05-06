@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace QRCross.DataNose
+namespace DataNoseScanner.DataNose
 {
     public class DataNoseCodeResponse
     {

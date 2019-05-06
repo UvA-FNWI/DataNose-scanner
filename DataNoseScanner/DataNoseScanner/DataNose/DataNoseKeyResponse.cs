@@ -4,7 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace QRCross.DataNose
+namespace DataNoseScanner.DataNose
 {
     public class DataNoseKeyResponse
     {
