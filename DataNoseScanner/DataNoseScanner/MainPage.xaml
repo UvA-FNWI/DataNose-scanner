@@ -4,11 +4,26 @@
              xmlns:local="clr-namespace:DataNoseScanner"
              x:Class="DataNoseScanner.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+
+            <Image HorizontalOptions="Center" Source="ic_launcher_round.png"/>
+            <Image HorizontalOptions="Center" Source="uvalogo.png"/>
+
+            <Frame BackgroundColor="#F0F0F0" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="" x:Name="apiresult" HorizontalOptions="Center"></Label>
+                    <Label Text="" x:Name="mycode" HorizontalOptions="Center"></Label>
+
+                    <Label Text="" x:Name="lblStudent" HorizontalOptions="Center" HeightRequest="40"></Label>
+                    <Label Text="" x:Name="lblProgramme" HorizontalOptions="Center" HeightRequest="40"></Label>
+                    <Label Text="" x:Name="lblRemarks" HorizontalOptions="Center" HeightRequest="40"></Label>
+                </StackLayout>
+            </Frame>
+
+            <Button Text="Scan Code" Clicked="btnScan_Clicked"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

@@ -13,5 +13,11 @@ namespace DataNoseScanner
         {
             InitializeComponent();
         }
+
+        private void btnScan_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
