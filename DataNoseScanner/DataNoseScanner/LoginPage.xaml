@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DataNoseScanner.LoginPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+            <BoxView HeightRequest="20"/>
+            <Image HorizontalOptions="Center" Source="ic_launcher_round.png"/>
+            <Image HorizontalOptions="Center" Source="uvalogo.png"/>
+            <Frame BackgroundColor="#F0F0F0" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Entry x:Name="User" Placeholder="Username"   
+                           PlaceholderColor="Black" HeightRequest="40"   
+                           Keyboard="Email"  
+                           TextColor="Black"/>
+                    <Entry x:Name="Password" Placeholder="Password"   
+                           PlaceholderColor="Black" HeightRequest="40"   
+                           IsPassword="True"  
+                           TextColor="Black"/>
+                </StackLayout>
+            </Frame>
+            <Button Clicked="btnLogin_Clicked" Text="Login" TextColor="White"  
+                    FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                    BackgroundColor="Black" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
