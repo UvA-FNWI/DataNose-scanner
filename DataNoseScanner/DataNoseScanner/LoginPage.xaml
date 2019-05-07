@@ -6,8 +6,32 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
             <BoxView HeightRequest="20"/>
-            <Image HorizontalOptions="Center" Source="ic_launcher_round.png"/>
-            <Image HorizontalOptions="Center" Source="uvalogo.png"/>
+
+            <Image HorizontalOptions="Center">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="datanose"/>
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="ic_launcher_round.png"/>
+                        </OnPlatform.Android>
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+            <Image HorizontalOptions="Center">
+                <Image.Source>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <OnPlatform.iOS>
+                            <FileImageSource File="uvalogo"/>
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                            <FileImageSource File="uvalogo.png"/>
+                        </OnPlatform.Android>
+                    </OnPlatform>
+                </Image.Source>
+            </Image>
+
             <Frame BackgroundColor="#F0F0F0" HasShadow="False">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Entry x:Name="User" Placeholder="Username"   
