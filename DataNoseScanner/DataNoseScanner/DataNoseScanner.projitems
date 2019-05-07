@@ -18,6 +18,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Common\IToastMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\WifiHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseCodeResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseConnector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseKeyResponse.cs" />

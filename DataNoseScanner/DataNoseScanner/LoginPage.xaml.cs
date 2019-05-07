@@ -15,11 +15,15 @@ namespace DataNoseScanner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private WifiHelper wifiHelper = null;
         private Settings settings = null;
 
         public LoginPage()
         {
             InitializeComponent();
+
+            wifiHelper = new WifiHelper();
+            wifiHelper.CheckWIFI();
 
             settings = new Settings();
             if (settings.SignedUp == true)
@@ -47,7 +51,7 @@ namespace DataNoseScanner
 
         private async Task LoginSuccessfull(string sMessage)
         {
-            DependencyService.Get<IToastMessage>().LongAlert(sMessage);
+            //DependencyService.Get<IToastMessage>().LongAlert(sMessage);
             await LoginSuccessfull();
         }
 
