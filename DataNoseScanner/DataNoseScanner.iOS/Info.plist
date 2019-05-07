@@ -34,5 +34,7 @@
     <string>DataNoseScanner</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Scan using the camera.</string>
 </dict>
 </plist>
