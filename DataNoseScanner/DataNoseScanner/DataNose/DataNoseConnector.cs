@@ -11,20 +11,19 @@ namespace DataNoseScanner.DataNose
         //public const string API_URL = "https://api-acc.datanose.nl/ScannerApp?key="; // "https://api.datanose.nl/ScannerApp?key=";
         private string API_URL = "https://api-acc.datanose.nl/ScannerApp";
         private HttpClient client;
-        private string sUser;
-        private string sPass;
+        private ScannerAccount Account;
 
-        public DataNoseConnector(string apiurl, string user, string pass)
+        public DataNoseConnector(string apiurl, ScannerAccount account)
         {
-            client = new HttpClient();
             api_url = apiurl;
-            setUser(user, pass);
+            client = new HttpClient();
+            Account = account;
         }
 
-        public DataNoseConnector(string user, string pass)
+        public DataNoseConnector(ScannerAccount account)
         {
             client = new HttpClient();
-            setUser(user, pass);
+            Account = account;
         }
 
         public string api_url
@@ -33,17 +32,12 @@ namespace DataNoseScanner.DataNose
             set { API_URL = value; }
         }
 
-        public void setUser(string user, string pass)
-        {
-            sUser = user;
-            sPass = pass;
-        }
-
         public async Task<DataNoseKeyResponse> tryKey()
         {
-            string request = API_URL + "?key=" + sPass;
-
-            HttpResponseMessage response = await client.GetAsync(request);
+            string request = API_URL + "/singup";
+            string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(Account);
+            HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(request, content);
             if (response.IsSuccessStatusCode)
             {
                 string body = await response.Content.ReadAsStringAsync();
@@ -60,9 +54,11 @@ namespace DataNoseScanner.DataNose
 
         public async Task<DataNoseCodeResponse> tryCode(string code)
         {
-            string request = API_URL + "?key=" + sPass + "&code" + code;
-
-            HttpResponseMessage response = await client.GetAsync(request);
+            string request = API_URL + "/scan";
+            ScannerScan scan = new ScannerScan() { Code = code, Account = Account };
+            string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(scan);
+            HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(request, content);
             if (response.IsSuccessStatusCode)
             {
                 string body = await response.Content.ReadAsStringAsync();
