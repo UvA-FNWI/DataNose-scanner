@@ -19,28 +19,36 @@ namespace DataNoseScanner
         {
             InitializeComponent();
 
+            //global::Xamarin.Forms.Forms.Init(this, );
+            //global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
+
             settings = new Settings();
             string sUser = settings.UserID;
             string sPass = settings.UserPass;
             string api_url = settings.server + settings.server_api;
-            DNC = new DataNoseConnector(api_url, sPass);
+            DNC = new DataNoseConnector(api_url, new ScannerAccount() { User = sUser, Pass = sPass });
         }
 
         private async void btnScan_Clicked(object sender, EventArgs e)
         {
             var scan = new ZXingScannerPage();
+            scan.IsAnalyzing = true;
+            
             await Navigation.PushAsync(scan);
             scan.OnScanResult += (result) =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PopAsync();
-                    mycode.Text = result.Text;
+                    //mycode.Text = result.Text;
+                    lblStudent.Text = "Processing...";
+                    lblProgramme.Text = "";
+                    lblRemarks.Text = "";
 
                     DataNoseCodeResponse response = await DNC.tryCode(result.Text);
                     if (response != null)
                     {
-                        apiresult.Text = response.status;
+                        //apiresult.Text = response.status;
                         lblStudent.Text = response.student;
                         lblProgramme.Text = response.programme;
                         lblRemarks.Text = response.remarks;
@@ -48,6 +56,7 @@ namespace DataNoseScanner
                 });
             };
         }
+
 
     }
 }

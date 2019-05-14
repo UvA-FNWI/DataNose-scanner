@@ -54,7 +54,7 @@ namespace DataNoseScanner.Common
             {
                 string sEntry = getString("server_api");
                 if ((sEntry == null) || (sEntry == ""))
-                    sEntry = @"ScannerApp";
+                    sEntry = @"scannerapp";
                 return sEntry;
             }
             set

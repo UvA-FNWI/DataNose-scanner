@@ -33,9 +33,9 @@
             </Image>
 
             <Frame BackgroundColor="#F0F0F0" HasShadow="False">
-                <StackLayout Orientation="Vertical" Spacing="10">
-                    <Label Text="" x:Name="apiresult" HorizontalOptions="Center"></Label>
-                    <Label Text="" x:Name="mycode" HorizontalOptions="Center"></Label>
+                <StackLayout Orientation="Vertical" Spacing="5">
+                    <!--<Label Text="" x:Name="apiresult" HorizontalOptions="Center"></Label>
+                    <Label Text="" x:Name="mycode" HorizontalOptions="Center"></Label>-->
 
                     <Label Text="" x:Name="lblStudent" HorizontalOptions="Center" HeightRequest="40"></Label>
                     <Label Text="" x:Name="lblProgramme" HorizontalOptions="Center" HeightRequest="40"></Label>
@@ -45,7 +45,7 @@
 
             <Button Text="Scan Code" Clicked="btnScan_Clicked" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
-                    BackgroundColor="Black" />
+                    BackgroundColor="Black" Margin="0,0,0,20"/>
 
         </StackLayout>
     </ContentPage.Content>

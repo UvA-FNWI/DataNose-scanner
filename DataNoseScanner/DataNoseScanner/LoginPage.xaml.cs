@@ -36,7 +36,7 @@ namespace DataNoseScanner
             string sPass = Password.Text;
             string api_url = settings.server + settings.server_api;
 
-            DataNoseConnector DNC = new DataNoseConnector(api_url, sUser, sPass);
+            DataNoseConnector DNC = new DataNoseConnector(api_url, new ScannerAccount() { User = sUser, Pass = sPass });
             DataNoseKeyResponse response = await DNC.tryKey();
             if ((response != null) && (response.status == "valid-key"))
             {
