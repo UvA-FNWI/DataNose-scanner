@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DataNoseScanner.LoginPage"
              BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Datanose Scanner" FontSize="24" TextColor="white" VerticalTextAlignment="Center"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
             <BoxView HeightRequest="20"/>
 
@@ -31,8 +37,9 @@
                     </OnPlatform>
                 </Image.Source>
             </Image>
+                
 
-            <Frame BackgroundColor="#F0F0F0" HasShadow="False">
+                <Frame BackgroundColor="#F0F0F0" HasShadow="False">
                 <StackLayout Orientation="Vertical" Spacing="10">
                     <Entry x:Name="User" Placeholder="Username"   
                            PlaceholderColor="Black" HeightRequest="40"   
@@ -48,5 +55,6 @@
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
                     BackgroundColor="Black" />
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

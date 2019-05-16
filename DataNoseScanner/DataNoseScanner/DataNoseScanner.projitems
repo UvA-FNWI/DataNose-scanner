@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\DataNoseKeyResponse.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\ScannerAccount.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataNose\ScannerScan.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ILoginManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

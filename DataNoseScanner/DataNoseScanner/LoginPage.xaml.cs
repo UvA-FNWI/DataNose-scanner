@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using DataNoseScanner.Common;
-using DataNoseScanner.DataNose;
 
 namespace DataNoseScanner
 {
@@ -17,17 +16,22 @@ namespace DataNoseScanner
     {
         private WifiHelper wifiHelper = null;
         private Settings settings = null;
+        private ILoginManager loginManager = null;
 
-        public LoginPage()
+        public LoginPage(ILoginManager loginmanager)
         {
             InitializeComponent();
+
+            loginManager = loginmanager;
 
             wifiHelper = new WifiHelper();
             wifiHelper.CheckWIFI();
 
             settings = new Settings();
-            if (settings.SignedUp == true)
-                Task.Run(() => LoginSuccessfull());
+            User.Text = settings.UserID;
+            Password.Text = settings.UserPass;
+            //if (settings.SignedUp == true)
+            //    Task.Run(() => LoginSuccessfull());
         }
 
         private async void btnLogin_Clicked(object sender, EventArgs e)
@@ -43,21 +47,22 @@ namespace DataNoseScanner
                 settings.UserID = sUser;
                 settings.UserPass = sPass;
                 settings.SignedUp = true;
-                await LoginSuccessfull(response.message);
+                LoginSuccessfull(response.message);
             }
             else
                 LoginFailed();
         }
 
-        private async Task LoginSuccessfull(string sMessage)
+        private void LoginSuccessfull(string sMessage)
         {
             //DependencyService.Get<IToastMessage>().LongAlert(sMessage);
-            await LoginSuccessfull();
+            LoginSuccessfull();
         }
 
-        private async Task LoginSuccessfull()
+        private void LoginSuccessfull()
         {
-            await Navigation.PushAsync(new MainPage());
+            loginManager.ShowMainPage();
+            //await Navigation.PushAsync(new MainPage());
         }
 
         private void LoginFailed()
