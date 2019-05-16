@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataNoseScanner"
-             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              x:Class="DataNoseScanner.MainPage"
              BackgroundColor="White">
     <NavigationPage.TitleView>
@@ -39,9 +39,9 @@
                 </Image.Source>
             </Image>
 
-            
-                <forms:CarouselView x:Name="carouselInfo">
-                     <forms:CarouselView.ItemTemplate>
+
+                <controls:CarouselViewControl x:Name="carouselInfo" Orientation="Horizontal" InterPageSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <controls:CarouselViewControl.ItemTemplate>
                          <DataTemplate>
                             <Frame BackgroundColor="#F0F0F0" HasShadow="False">
                             <StackLayout>
@@ -52,8 +52,8 @@
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
-                     </forms:CarouselView.ItemTemplate>
-                </forms:CarouselView>
+                     </controls:CarouselViewControl.ItemTemplate>
+                </controls:CarouselViewControl>
                
 
                 <Button Text="Scan Code" Clicked="btnScan_Clicked" TextColor="White"  
