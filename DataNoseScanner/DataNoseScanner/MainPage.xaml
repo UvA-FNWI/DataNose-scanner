@@ -39,28 +39,22 @@
                 </Image.Source>
             </Image>
 
-            <Frame BackgroundColor="#F0F0F0" HasShadow="False">
-                <StackLayout Orientation="Vertical" Spacing="5">
-                    <!--<Label Text="" x:Name="apiresult" HorizontalOptions="Center"></Label>
-                    <Label Text="" x:Name="mycode" HorizontalOptions="Center"></Label>-->
-
-                    <Label Text="" x:Name="lblStudent" HorizontalOptions="Center" HeightRequest="40"></Label>
-                    <Label Text="" x:Name="lblProgramme" HorizontalOptions="Center" HeightRequest="40"></Label>
-                    <Label Text="" x:Name="lblRemarks" HorizontalOptions="Center" HeightRequest="40"></Label>
-                </StackLayout>
-                    <forms:CarouselView x:Name="carouselInfo">
-                        <forms:CarouselView.ItemTemplate>
-                          <DataTemplate>
+            
+                <forms:CarouselView x:Name="carouselInfo">
+                     <forms:CarouselView.ItemTemplate>
+                         <DataTemplate>
+                            <Frame BackgroundColor="#F0F0F0" HasShadow="False">
                             <StackLayout>
-                              <Label x:Name="lblName" Text="{Binding student}"></Label>
-                              <Label x:Name="lnlprog" Text="{Binding programme}"></Label>
-                            </StackLayout>
-                            
-                            
-                          </DataTemplate>
-                        </forms:CarouselView.ItemTemplate>
-                    </forms:CarouselView> 
-            </Frame>
+                                    <Label Text="{Binding id}" x:Name="lblUvAnetID" HorizontalOptions="Center" HeightRequest="40"></Label>
+                                    <Label Text="{Binding student}" x:Name="lblStudent" HorizontalOptions="Center" HeightRequest="40"></Label>
+                                    <Label Text="{Binding programme}" x:Name="lblProgramme" HorizontalOptions="Center" HeightRequest="40"></Label>
+                                    <Label Text="{Binding remarks}" x:Name="lblRemarks" HorizontalOptions="Center" HeightRequest="40"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                     </forms:CarouselView.ItemTemplate>
+                </forms:CarouselView>
+               
 
                 <Button Text="Scan Code" Clicked="btnScan_Clicked" TextColor="White"  
                     FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
@@ -76,8 +70,6 @@
                     </Grid.ColumnDefinitions>
                     <Button Text="Sign out" Clicked="btnSignout_Clicked" Grid.Row="0" Grid.Column="0"></Button>
                     <Button Text="Datanose" Clicked="btnDatanose_Clicked" Grid.Row="0" Grid.Column="1"></Button>
-
-                    
                 </Grid>
 
             </StackLayout>

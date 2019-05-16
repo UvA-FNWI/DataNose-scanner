@@ -33,7 +33,7 @@ namespace DataNoseScanner
             string api_url = settings.server + settings.server_api;
             DNC = new DataNoseConnector(api_url, new ScannerAccount() { User = sUser, Pass = sPass });
 
-            Responses.Add(new DataNoseCodeResponse() { student = "Tap the SCAN button to begin" });
+            Responses.Add(new DataNoseCodeResponse() { id = "1234",  student = "Tap the SCAN button to begin", programme = "bla", remarks = "remarks" });
 
             //names = new ObservableCollection<string> { "bla", "iets", "haha" };
             //names.Add(new PersonInfo() { Name = "bla", programme = "1" });
@@ -61,9 +61,9 @@ namespace DataNoseScanner
                 {
                     await Navigation.PopAsync();
                     //mycode.Text = result.Text;
-                    lblStudent.Text = "Processing...";
-                    lblProgramme.Text = "";
-                    lblRemarks.Text = "";
+                    //lblStudent.Text = "Processing...";
+                    //lblProgramme.Text = "";
+                    //lblRemarks.Text = "";
                     //names.Add(new PersonInfo() { Name = result.Text, programme = "scan" } );
                     //carouselInfo.Position = names.Count - 1;
 
@@ -77,8 +77,8 @@ namespace DataNoseScanner
                         //lblProgramme.Text = response.programme;
                         //lblRemarks.Text = response.remarks;
                     }
-                    else
-                        lblStudent.Text = "Failed connecting with server";
+                    //else
+                    //    lblStudent.Text = "Failed connecting with server";
                 });
             };
         }
