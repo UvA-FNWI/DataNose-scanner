@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataNoseScanner.DataNose
+namespace DataNoseScanner
 {
     public class ScannerScan
     {

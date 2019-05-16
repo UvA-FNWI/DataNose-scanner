@@ -4,7 +4,7 @@ using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DataNoseScanner.DataNose
+namespace DataNoseScanner
 {
     public class DataNoseConnector
     {
@@ -52,7 +52,6 @@ namespace DataNoseScanner.DataNose
                 string body = await response.Content.ReadAsStringAsync();
 #if __ANDROID__
                 Android.Util.Log.Info("webapi", body);
-                Xamarin.Forms.DependencyService.Get<Common.IToastMessage>().LongAlert(body);
 #endif 
                 try
                 {
@@ -62,8 +61,9 @@ namespace DataNoseScanner.DataNose
             }
             else
             {
+#if __ANDROID__
                 Android.Util.Log.Info("webapi", "post fail: " + response.StatusCode.ToString());
-                Xamarin.Forms.DependencyService.Get<Common.IToastMessage>().LongAlert("post fail");
+#endif
             }
 
             return null;
@@ -74,17 +74,29 @@ namespace DataNoseScanner.DataNose
             string request = API_URL + "/scan";
             ScannerScan scan = new ScannerScan() { Code = code, Account = Account };
             string jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(scan);
+#if __ANDROID__
+            Android.Util.Log.Info("webapi", request);
+            Android.Util.Log.Info("webapi", jsonString);
+#endif 
             HttpContent content = new StringContent(jsonString, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(request, content);
             if (response.IsSuccessStatusCode)
             {
                 string body = await response.Content.ReadAsStringAsync();
-
+#if __ANDROID__
+                Android.Util.Log.Info("webapi", body);
+#endif 
                 try
                 {
                     return new DataNoseCodeResponse(body);
                 }
                 catch { }
+            }
+            else
+            {
+#if __ANDROID__
+                Android.Util.Log.Info("webapi", "post fail: " + response.StatusCode.ToString());
+#endif
             }
 
             return null;

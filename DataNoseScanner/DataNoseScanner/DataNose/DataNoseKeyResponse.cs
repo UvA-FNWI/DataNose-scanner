@@ -4,7 +4,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace DataNoseScanner.DataNose
+namespace DataNoseScanner
 {
     public class DataNoseKeyResponse
     {
