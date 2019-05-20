@@ -15,9 +15,12 @@ namespace DataNoseScanner
             get { return itemHeight1; }
             set
             {
-                itemHeight1 = value;
-                if (HeightChanged != null)
-                    HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                if (itemHeight1 != value)
+                {
+                    itemHeight1 = value;
+                    if (HeightChanged != null)
+                        HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                }
             }
         }
 
@@ -27,9 +30,12 @@ namespace DataNoseScanner
             get { return itemHeight2; }
             set
             {
-                itemHeight2 = value;
-                if (HeightChanged != null)
-                    HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                if (itemHeight2 != value)
+                {
+                    itemHeight2 = value;
+                    if (HeightChanged != null)
+                        HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                }
             }
         }
 
@@ -39,9 +45,12 @@ namespace DataNoseScanner
             get { return itemHeight3; }
             set
             {
-                itemHeight3 = value;
-                if (HeightChanged != null)
-                    HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                if (itemHeight3 != value)
+                {
+                    itemHeight3 = value;
+                    if (HeightChanged != null)
+                        HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                }
             }
         }
 
@@ -51,9 +60,12 @@ namespace DataNoseScanner
             get { return itemHeight4; }
             set
             {
-                itemHeight4 = value;
-                if (HeightChanged != null)
-                    HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                if (itemHeight4 != value)
+                {
+                    itemHeight4 = value;
+                    if (HeightChanged != null)
+                        HeightChanged(itemHeight1, itemHeight2, itemHeight3, itemHeight4);
+                }
             }
         }
         public string status { get; set; }

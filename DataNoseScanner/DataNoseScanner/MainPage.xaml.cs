@@ -39,7 +39,9 @@ namespace DataNoseScanner
         private void CarouselItemSizeChanged(double h1, double h2, double h3, double h4)
         {
             Console.WriteLine("carousel height: " + h1.ToString() + " " + h2.ToString() + " " + h3.ToString() + " " + h4.ToString());
-            carouselInfo.HeightRequest = h1 + h2 + h3 + h4 + 9 * 6;
+            double newHeight = h1 + h2 + h3 + h4 + 9 * 6;
+            if (carouselInfo.HeightRequest < newHeight)
+                carouselInfo.HeightRequest = newHeight;
         }
 
         private async void btnScan_Clicked(object sender, EventArgs e)
