@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataNoseScanner"
-             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:controls="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              x:Class="DataNoseScanner.MainPage"
              BackgroundColor="White">
     <NavigationPage.TitleView>
@@ -12,48 +12,48 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                
+                <StackLayout Orientation="Vertical" Padding="30" Spacing="40">
+                <Image HorizontalOptions="Center">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <OnPlatform.iOS>
+                                <FileImageSource File="datanose"/>
+                            </OnPlatform.iOS>
+                            <OnPlatform.Android>
+                                <FileImageSource File="ic_launcher_round.png"/>
+                            </OnPlatform.Android>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <OnPlatform.iOS>
+                                    <FileImageSource File="uvalogo"/>
+                                </OnPlatform.iOS>
+                                <OnPlatform.Android>
+                                    <FileImageSource File="uvalogo.png"/>
+                                </OnPlatform.Android>
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
 
-            <Image HorizontalOptions="Center">
-                <Image.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <OnPlatform.iOS>
-                            <FileImageSource File="datanose"/>
-                        </OnPlatform.iOS>
-                        <OnPlatform.Android>
-                        <FileImageSource File="ic_launcher_round.png"/>
-                        </OnPlatform.Android>
-                    </OnPlatform>
-                </Image.Source>
-            </Image>
-            <Image HorizontalOptions="Center">
-                <Image.Source>
-                    <OnPlatform x:TypeArguments="ImageSource">
-                        <OnPlatform.iOS>
-                            <FileImageSource File="uvalogo"/>
-                        </OnPlatform.iOS>
-                        <OnPlatform.Android>
-                            <FileImageSource File="uvalogo.png"/>
-                        </OnPlatform.Android>
-                    </OnPlatform>
-                </Image.Source>
-            </Image>
-
-
-                <controls:CarouselViewControl x:Name="carouselInfo" Orientation="Horizontal" InterPageSpacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <controls:CarouselViewControl.ItemTemplate>
+                    <controls:CarouselView x:Name="carouselInfo" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <controls:CarouselView.ItemTemplate>
                          <DataTemplate>
                             <Frame BackgroundColor="#F0F0F0" HasShadow="False">
-                            <StackLayout>
-                                    <Label Text="{Binding id}" x:Name="lblUvAnetID" HorizontalOptions="Center" HeightRequest="40"></Label>
-                                    <Label Text="{Binding student}" x:Name="lblStudent" HorizontalOptions="Center" HeightRequest="40"></Label>
-                                    <Label Text="{Binding programme}" x:Name="lblProgramme" HorizontalOptions="Center" HeightRequest="40"></Label>
-                                    <Label Text="{Binding remarks}" x:Name="lblRemarks" HorizontalOptions="Center" HeightRequest="40"></Label>
+                                <StackLayout>
+                                    <Label Text="{Binding id}" x:Name="lblUvAnetID" HorizontalOptions="Center" Height="{Binding ItemHeight1, Mode=OneWayToSource}"></Label>
+                                    <Label Text="{Binding student}" x:Name="lblStudent" HorizontalOptions="Center" Height="{Binding ItemHeight2, Mode=OneWayToSource}"></Label>
+                                    <Label Text="{Binding programme}" x:Name="lblProgramme" HorizontalOptions="Center" Height="{Binding ItemHeight3, Mode=OneWayToSource}"></Label>
+                                    <Label Text="{Binding remarks}" x:Name="lblRemarks" HorizontalOptions="Center" Height="{Binding ItemHeight4, Mode=OneWayToSource}"></Label>
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
-                     </controls:CarouselViewControl.ItemTemplate>
-                </controls:CarouselViewControl>
+                     </controls:CarouselView.ItemTemplate>
+                </controls:CarouselView>
                
 
                 <Button Text="Scan Code" Clicked="btnScan_Clicked" TextColor="White"  
@@ -73,6 +73,22 @@
                 </Grid>
 
             </StackLayout>
+
+                <ContentView x:Name="busyBG"
+                 BackgroundColor="#222222" Opacity="0.6"
+                 AbsoluteLayout.LayoutFlags="All"
+                 AbsoluteLayout.LayoutBounds="0,0,1,1"
+                 IsVisible="false">
+                                </ContentView>
+                <ActivityIndicator x:Name="busyIndicator"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                 Scale="2"
+                 IsRunning="false"
+                 IsVisible="false"
+                 Color="Black" />
+
+            </AbsoluteLayout>
         </ScrollView>
     </ContentPage.Content>
 

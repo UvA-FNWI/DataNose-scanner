@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZXing.Net.Mobile.Forms;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace DataNoseScanner
 {
@@ -24,30 +25,22 @@ namespace DataNoseScanner
 
             loginManager = loginmanager;
 
-            //global::Xamarin.Forms.Forms.Init(this, );
-            //global::ZXing.Net.Mobile.Forms.iOS.Platform.Init();
-
             settings = new Settings();
             string sUser = settings.UserID;
             string sPass = settings.UserPass;
             string api_url = settings.server + settings.server_api;
             DNC = new DataNoseConnector(api_url, new ScannerAccount() { User = sUser, Pass = sPass });
 
-            Responses.Add(new DataNoseCodeResponse() { id = "1234",  student = "Tap the SCAN button to begin", programme = "bla", remarks = "remarks" });
+            Responses.Add(new DataNoseCodeResponse() { id = "",  student = "Tap the SCAN button", programme = "to begin", remarks = "", HeightChanged = CarouselItemSizeChanged });
 
-            //names = new ObservableCollection<string> { "bla", "iets", "haha" };
-            //names.Add(new PersonInfo() { Name = "bla", programme = "1" });
-            //names.Add(new PersonInfo() { Name = "iets", programme = "2" });
-            //for (int i = 0; i < 1000; i++)
-            //    names.Add( "item " + i.ToString());
             carouselInfo.ItemsSource = Responses;
-            
-            
-            
-            
         }
 
-        
+        private void CarouselItemSizeChanged(double h1, double h2, double h3, double h4)
+        {
+            Console.WriteLine("carousel height: " + h1.ToString() + " " + h2.ToString() + " " + h3.ToString() + " " + h4.ToString());
+            carouselInfo.HeightRequest = h1 + h2 + h3 + h4 + 9 * 6;
+        }
 
         private async void btnScan_Clicked(object sender, EventArgs e)
         {
@@ -59,28 +52,27 @@ namespace DataNoseScanner
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    busyBG.IsVisible = true;
+                    busyIndicator.IsRunning = true;
+                    busyIndicator.IsVisible = true;
+
                     await Navigation.PopAsync();
-                    //mycode.Text = result.Text;
-                    //lblStudent.Text = "Processing...";
-                    //lblProgramme.Text = "";
-                    //lblRemarks.Text = "";
-                    //names.Add(new PersonInfo() { Name = result.Text, programme = "scan" } );
-                    //carouselInfo.Position = names.Count - 1;
 
                     DataNoseCodeResponse response = await DNC.tryCode(result.Text);
                     if (response != null)
                     {
+                        response.HeightChanged = CarouselItemSizeChanged;
                         Responses.Add(response);
                         carouselInfo.Position = Responses.Count - 1;
-                        //apiresult.Text = response.status;
-                        //lblStudent.Text = response.student;
-                        //lblProgramme.Text = response.programme;
-                        //lblRemarks.Text = response.remarks;
                     }
-                    //else
-                    //    lblStudent.Text = "Failed connecting with server";
+
+                    busyBG.IsVisible = false;
+                    busyIndicator.IsRunning = false;
+                    busyIndicator.IsVisible = false;
                 });
             };
+
+            
         }
 
         private void btnSignout_Clicked(object sender, EventArgs e)
@@ -95,9 +87,4 @@ namespace DataNoseScanner
 
     }
 
-    //public class PersonInfo
-    //{
-    //    public string Name { get; set; }
-    //    public string programme { get; set; }
-    //}
 }
