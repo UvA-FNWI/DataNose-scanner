@@ -29,7 +29,7 @@ namespace DataNoseScanner
 
             settings = new Settings();
             User.Text = settings.UserID;
-            Password.Text = settings.UserPass;
+            //Password.Text = settings.UserPass;
             //if (settings.SignedUp == true)
             //    Task.Run(() => LoginSuccessfull());
         }

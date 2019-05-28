@@ -39,7 +39,7 @@ namespace DataNoseScanner.Common
             {
                 string sServer = getString("server");
                 if ((sServer == null) || (sServer == ""))
-                    sServer = @"https://api-acc.datanose.nl/"; // @"https://api.datanose.nl/";
+                    sServer = @"https://api.datanose.nl/"; // @"https://api-acc.datanose.nl/"; //
                 return sServer;
             }
             set
